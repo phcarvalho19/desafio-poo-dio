@@ -1,7 +1,7 @@
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class Main {
@@ -17,14 +17,62 @@ public class Main {
         curso1.setDescrição("descrição curso java");
         curso1.setCargaHoraria(8);
 
+    Conteudo conteudo = new Curso();
+    Conteudo conteudo1 = new Mentoria();
+
         Mentoria mentoria = new Mentoria();
         mentoria.setTitulo("mentoria de java");
         mentoria.setDescrição("descrição mentoria de java");
         mentoria.setData(LocalDate.now());
 
 
-        System.out.println(curso1);
+        /*System.out.println(curso1);
         System.out.println(curso2);
-        System.out.println(mentoria);
+           System.out.println(mentoria);*/
+
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescrição("Descrição Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devPedro = new Dev();
+        devPedro.inscreverBootcamp(bootcamp);
+        devPedro.setNome("Pedro");
+        System.out.println("Conteudo Inscritos: " + devPedro.getConteudoInscritos());
+        devPedro.progredir();
+
+
+        System.out.println("-");
+
+        System.out.println("Conteudo Inscritos: " + devPedro.getConteudoInscritos());
+        System.out.println("Conteudos Concluidos Pedro"+ devPedro.getConteudoConcluidos());
+        devPedro.progredir();
+        System.out.println("XP:"+ devPedro.calcularTotalXp());
+
+
+        System.out.println("-------------------------");
+
+
+        Dev devDuda = new Dev();
+        devDuda.inscreverBootcamp(bootcamp);
+        devDuda.setNome("Duda");
+        System.out.println("Conteudo Inscritos: " + devDuda.getConteudoInscritos());
+
+        devDuda.progredir();
+
+        devDuda.progredir();
+        devDuda.progredir();
+        System.out.println("-");
+
+        System.out.println("Conteudo Inscritos: " + devDuda .getConteudoInscritos());
+        System.out.println("Conteudos Concluidos Duda"+ devDuda.getConteudoConcluidos());
+        System.out.println("XP:"+ devDuda.calcularXP());
+
+
+
+
+
     }
 }
